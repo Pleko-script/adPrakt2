@@ -9,25 +9,19 @@ QUEUE Klasse zur Verwaltung einer Reihe von Daten
 
 Enthält die methoden queueIn, queueOut, einfuegeBei ,loesche , zeigDich , selSort
 */
-
+#include "QUEUE.h"
 #include "EVKD.cpp"
-// ------------------NOCH NICHT FERTIG ----------------
-class QUEUE
-{
-private:
-    EVKD *Enter;
-    EVKD *Last;
-    long AnzElem;
 
-public:
-    QUEUE()
+//QUEUE Klasse
+
+    QUEUE::QUEUE()
     {
         Enter = NULL;
         Last = NULL;
         AnzElem = 0;
     }
     //Eintrag in die Warteschlange
-    void queueIn(char *InText)
+    void QUEUE::queueIn(char *InText)
     {
         EVKD *NewElem = new EVKD(InText, Enter);
         if (Enter == NULL)
@@ -43,7 +37,7 @@ public:
         AnzElem++;
     }
     //Element aus der Liste entfernen nach FIFO prinzip
-    char *queueOut()
+    char *QUEUE::queueOut()
     {
         if (Enter == NULL)
         {
@@ -62,7 +56,7 @@ public:
         }
     }
     //Element in die Reihe hinzufügen in einer bestimmte stelle
-    void einfuegeBei(EVKD *In, int Pos)
+    void QUEUE::einfuegeBei(EVKD *In, int Pos)
     {
         EVKD *NewElem = new EVKD(In->getData(), In->getNext());
         if (Pos == 0)
@@ -83,7 +77,7 @@ public:
         AnzElem++;
     }
     //Element aus der Liste entfernen
-    EVKD *loesche(int Pos)
+    EVKD *QUEUE::loesche(int Pos)
     {
         Pos--;
         EVKD *Vor = Enter;
@@ -98,7 +92,7 @@ public:
     }
 
     //Reihe zeigen
-    void zeigDich()
+    void QUEUE::zeigDich()
     {
         EVKD *Ausgabe = Enter;
         for (int i = 0; i < AnzElem; i++)
@@ -112,7 +106,7 @@ public:
         }
     }
     //Reihe sortieren
-    void selSort()
+    void QUEUE::selSort()
     {
         int importNumber;
 
@@ -158,4 +152,3 @@ public:
             einfuegeBei(Temp, i);
         }
     }
-};

@@ -12,17 +12,11 @@ EVKD Klasse zum Orgransieren der Datenstruktur
 using namespace std;
 #include <stdio.h>
 #include <string.h>
+#include "EVKD.h"
 
 //EVKD Klasse
-class EVKD
-{
-private:
-	char *Data;
-	int AnzChar;
-	EVKD *Next;
 
-public:
-	EVKD(char *LPSZData, EVKD *Next)
+	EVKD::EVKD(char *LPSZData, EVKD *Next)
 	{
 		Data = LPSZData;
 		AnzChar = 0;
@@ -33,32 +27,32 @@ public:
 		this->Next = Next;
 	}
 	//Daten zeigen
-	void ShowData()
+	void EVKD::ShowData()
 	{
 		cout << "   Data = " << Data << "   AnzChar = " << AnzChar  << "   Next = " << Next << endl;
 	}
 	//Daten zurueckgeben
-	char *getData()
+	char *EVKD::getData()
 	{
 		return Data;
 	}
 	//getAnzChar zurueckgeben
-	int getAnzChar()
+	int EVKD::getAnzChar()
 	{
 		return AnzChar;
 	}
 	//Nachfolger zurueckgeben
-	EVKD *getNext()
+	EVKD * EVKD::getNext()
 	{
 		return Next;
 	}
 	//Nachfolger setzen
-	void setNext(EVKD *Next)
+	void EVKD::setNext(EVKD *Next)
 	{
 		this->Next = Next;
 	}
 	//operator zum vergleichen überladen
-	bool  operator>(const EVKD &RHS)
+	bool  EVKD::operator>(const EVKD &RHS)
 	{
 		if (strcmp(Data, RHS.Data) > 0)
 		{
@@ -69,7 +63,7 @@ public:
 			return false;
 		}
 	}
-	bool operator==(EVKD &RHS)
+	bool EVKD::operator==(EVKD &RHS)
 	{
 		if (strcmp(Data, RHS.Data) == 0)
 		{
@@ -80,4 +74,3 @@ public:
 			return false;
 		}
 	}
-};
