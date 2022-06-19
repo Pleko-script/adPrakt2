@@ -37,22 +37,27 @@ public:
 	{
 		cout << "   Data = " << Data << "   AnzChar = " << AnzChar  << "   Next = " << Next << endl;
 	}
+	//Daten zurueckgeben
 	char *getData()
 	{
 		return Data;
 	}
+	//getAnzChar zurueckgeben
 	int getAnzChar()
 	{
 		return AnzChar;
 	}
+	//Nachfolger zurueckgeben
 	EVKD *getNext()
 	{
 		return Next;
 	}
+	//Nachfolger setzen
 	void setNext(EVKD *Next)
 	{
 		this->Next = Next;
 	}
+	//operator zum vergleichen überladen
 	bool  operator>(const EVKD &RHS)
 	{
 		if (strcmp(Data, RHS.Data) > 0)

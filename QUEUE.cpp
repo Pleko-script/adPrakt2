@@ -7,7 +7,7 @@ Name: Jonas Pardeyke Matr:11142973
 
 QUEUE Klasse zur Verwaltung einer Reihe von Daten
 
-
+Enthält die methoden queueIn, queueOut, einfuegeBei ,loesche , zeigDich , selSort
 */
 
 #include "EVKD.cpp"
@@ -26,6 +26,7 @@ public:
         Last = NULL;
         AnzElem = 0;
     }
+    //Eintrag in die Warteschlange
     void queueIn(char *InText)
     {
         EVKD *NewElem = new EVKD(InText, Enter);
@@ -41,6 +42,7 @@ public:
         }
         AnzElem++;
     }
+    //Element aus der Liste entfernen nach FIFO prinzip
     char *queueOut()
     {
         if (Enter == NULL)
@@ -59,8 +61,7 @@ public:
                  << endl;
         }
     }
-    /* the method void einfuegeBei (EVKD * In, int Pos), which inserts the object In before
-    of the position in the list indicated by Pos.*/
+    //Element in die Reihe hinzufügen in einer bestimmte stelle
     void einfuegeBei(EVKD *In, int Pos)
     {
         EVKD *NewElem = new EVKD(In->getData(), In->getNext());
@@ -81,7 +82,7 @@ public:
         }
         AnzElem++;
     }
-
+    //Element aus der Liste entfernen
     EVKD *loesche(int Pos)
     {
         Pos--;
@@ -96,6 +97,7 @@ public:
         return Out;
     }
 
+    //Reihe zeigen
     void zeigDich()
     {
         EVKD *Ausgabe = Enter;
@@ -109,6 +111,7 @@ public:
             Ausgabe = Ausgabe->getNext();
         }
     }
+    //Reihe sortieren
     void selSort()
     {
         int importNumber;
@@ -117,9 +120,9 @@ public:
         for (int i = 0; i < AnzElem; i++)
         {
 
-            int hodl = 1;       // Zahl haltet die Position des kleinsten Elements
-            int count = 0;      // Zahl zählt die Position des aktuellen Elements
-            bool found = false; // bool ist true wenn das kleinstes Element gefunden wurde
+            int hodl = 1;     
+            int count = 0;      
+            bool found = false; 
 
             EVKD *smallest = new EVKD("ZZZZZZZ", NULL);
             EVKD *Ausgabe = Enter; // Ausgabe ist der Startpunkt des Listeners
