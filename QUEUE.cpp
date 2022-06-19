@@ -1,3 +1,15 @@
+/* Dateiname: QUEUE.cpp
+AD Praktikum 1 - SOSE22
+Gruppe: 21
+Name: Nik Tykhomyrov Matr:11134921
+Name: Jonas Pardeyke Matr:11142973
+
+
+QUEUE Klasse zur Verwaltung einer Reihe von Daten
+
+
+*/
+
 #include "EVKD.cpp"
 // ------------------NOCH NICHT FERTIG ----------------
 class QUEUE
@@ -47,8 +59,8 @@ public:
                  << endl;
         }
     }
-/* the method void einfuegeBei (EVKD * In, int Pos), which inserts the object In before
-of the position in the list indicated by Pos.*/
+    /* the method void einfuegeBei (EVKD * In, int Pos), which inserts the object In before
+    of the position in the list indicated by Pos.*/
     void einfuegeBei(EVKD *In, int Pos)
     {
         EVKD *NewElem = new EVKD(In->getData(), In->getNext());
@@ -70,10 +82,6 @@ of the position in the list indicated by Pos.*/
         AnzElem++;
     }
 
-
-
-
-
     EVKD *loesche(int Pos)
     {
         Pos--;
@@ -94,124 +102,57 @@ of the position in the list indicated by Pos.*/
         for (int i = 0; i < AnzElem; i++)
         {
 
-            cout << 1 + i << ". "
-                 << "Adresse: " << Ausgabe << "  Name: " << Ausgabe->getData() << endl;
+            cout << 1 + i << ". "<< "Adresse: " << Ausgabe;
+            Ausgabe->ShowData();
+
+
             Ausgabe = Ausgabe->getNext();
         }
     }
-
-    // Selection sort fifo
     void selSort()
     {
-        int PosNumber=0;
-        for(int i = 0; i < AnzElem; i++){
-            PosNumber=findSmallest2(i);
-            EVKD *Temp = loesche(PosNumber+1);
-            einfuegeBei(Temp, i);
-
-
-        }
-
-
-
-    }
-    int findSmallest2(int start)
-    {
-        int hodl = 1; // Zahl haltet die Position des kleinsten Elements
-        int count = 0; // Zahl zählt die Position des aktuellen Elements
-        bool found = false; // bool ist true wenn das kleinstes Element gefunden wurde
-
-        EVKD *smallest = new EVKD("ZZZZZZZ", NULL); 
-        EVKD *Ausgabe = Enter; // Ausgabe ist der Startpunkt des Listeners
-
-        for (int i = 0; i < AnzElem; i++)
-        {
-            count++;
-            //cout << "count: " << count << "  start:" << start << endl;
-
-            if (strcmp(smallest->getData(), Ausgabe->getData()) > 0 && count > start)
-            {
-                cout << "-----" << endl;
-                smallest = Ausgabe;
-                hodl = count;
-                found = true;
-            }
-            Ausgabe = Ausgabe->getNext();
-        }
-
-        cout << "Smallest Element: " << smallest->getData() << endl;
-        if (found == true)
-        {
-            cout << "Position: " << hodl << endl;
-            return hodl;
-
-        }
-        else
-        {
-            cout << "Position: " << AnzElem << endl;
-            return AnzElem;
-        }
-    }
-
-
-    void selSort2(){
         int importNumber;
 
-        int PosNumber=0;
-        for(int i = 0; i < AnzElem; i++){
-
-
-
-
-        int hodl = 1; // Zahl haltet die Position des kleinsten Elements
-        int count = 0; // Zahl zählt die Position des aktuellen Elements
-        bool found = false; // bool ist true wenn das kleinstes Element gefunden wurde
-
-        EVKD *smallest = new EVKD("ZZZZZZZ", NULL); 
-        EVKD *Ausgabe = Enter; // Ausgabe ist der Startpunkt des Listeners
-
-        for (int j = 0; j < AnzElem; j++)
+        int PosNumber = 0;
+        for (int i = 0; i < AnzElem; i++)
         {
-            count++;
-            //cout << "count: " << count << "  start:" << start << endl;
 
-            if (*smallest > *Ausgabe&& count > i)
+            int hodl = 1;       // Zahl haltet die Position des kleinsten Elements
+            int count = 0;      // Zahl zählt die Position des aktuellen Elements
+            bool found = false; // bool ist true wenn das kleinstes Element gefunden wurde
+
+            EVKD *smallest = new EVKD("ZZZZZZZ", NULL);
+            EVKD *Ausgabe = Enter; // Ausgabe ist der Startpunkt des Listeners
+
+            for (int j = 0; j < AnzElem; j++)
             {
-                cout << "-----" << endl;
-                smallest = Ausgabe;
-                hodl = count;
-                found = true;
+                count++;
+                // cout << "count: " << count << "  start:" << start << endl;
+
+                if (*smallest > *Ausgabe && count > i)
+                {
+                    //cout << "-----" << endl;
+                    smallest = Ausgabe;
+                    hodl = count;
+                    found = true;
+                }
+                Ausgabe = Ausgabe->getNext();
             }
-            Ausgabe = Ausgabe->getNext();
-        }
 
-        cout << "Smallest Element: " << smallest->getData() << endl;
-        if (found == true)
-        {
-            cout << "Position: " << hodl << endl;
-            importNumber= hodl;
-
-        }
-        else
-        {
-            cout << "Position: " << AnzElem << endl;
-            importNumber= AnzElem;
-        }
-           PosNumber=importNumber;
-
-
-
-
-
-
-
-            EVKD *Temp = loesche(PosNumber+1);
+            //cout << "Smallest Element: " << smallest->getData() << endl;
+            if (found == true)
+            {
+               // cout << "Position: " << hodl << endl;
+                importNumber = hodl;
+            }
+            else
+            {
+               // cout << "Position: " << AnzElem << endl;
+                importNumber = AnzElem;
+            }
+            PosNumber = importNumber;
+            EVKD *Temp = loesche(PosNumber + 1);
             einfuegeBei(Temp, i);
-
-
         }
-
-
     }
-
 };

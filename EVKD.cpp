@@ -1,7 +1,19 @@
+/* Dateiname: EVKD.cpp
+AD Praktikum 1 - SOSE22
+Gruppe: 21
+Name: Nik Tykhomyrov Matr:11134921
+Name: Jonas Pardeyke Matr:11142973
+
+EVKD Klasse zum Orgransieren der Datenstruktur
+
+
+*/
 #include <iostream>
 using namespace std;
 #include <stdio.h>
 #include <string.h>
+
+//EVKD Klasse
 class EVKD
 {
 private:
@@ -20,11 +32,10 @@ public:
 		}
 		this->Next = Next;
 	}
+	//Daten zeigen
 	void ShowData()
 	{
-		cout << "Data = " << Data << endl;
-		cout << "AnzChar = " << AnzChar << endl;
-		cout << "Next = " << Next << endl;
+		cout << "   Data = " << Data << "   AnzChar = " << AnzChar  << "   Next = " << Next << endl;
 	}
 	char *getData()
 	{
